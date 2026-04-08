@@ -1,1 +1,58 @@
+import matplotlib.pyplot as plt
+import numpy as np
 
+# Define the data for Lolos
+data_lolos = [2.93, 3.87, 1.87, 4, 3, 2.5, 3.87, 3.87, 4, 4, 1.31, 3.12, 3.75]
+
+# Define the data for Tidak Lolos
+data_tidak_lolos = [1.86, 3.13, 1.30, 2.82, 2.39, 2.30, 3.47, 3.21, 2.95, 3.04, 1.73, 2.65, 2.73]
+
+# Define the variable names
+variables = ['rekamjejak_publikasi', 'rekamjejak_relevansi', 'rekamjejak_kolaborator', 'urgensi_ketajaman', 'urgensi_inovasi',
+             'urgensi_stateoftheart', 'urgensi_roadmap', 'metode_akurasi', 'metode_kejelasan', 'metode_kesesuaian',
+             'metode_kredibilitas', 'referensi_kebaruan', 'referensi_relevansi']
+
+# Number of variables
+num_vars = len(variables)
+
+# Compute angle of each axis
+angles = np.linspace(0, 2 * np.pi, num_vars, endpoint=False).tolist()
+angles += angles[:1]
+
+# Plot data for Lolos
+data_lolos += data_lolos[:1]
+data_tidak_lolos += data_tidak_lolos[:1]
+
+fig, ax = plt.subplots(figsize=(8, 8), subplot_kw=dict(polar=True))
+
+# Set the range of the radial axis
+ax.set_ylim(0, 5)
+
+ax.fill(angles, data_lolos, color='blue', alpha=0.25)
+ax.plot(angles, data_lolos, color='blue', linewidth=2, label='Lolos')
+
+# Plot data for Tidak Lolos
+ax.fill(angles, data_tidak_lolos, color='red', alpha=0.25)
+ax.plot(angles, data_tidak_lolos, color='red', linewidth=2, label='Tidak Lolos')
+
+# Add labels
+ax.set_yticks([1, 2, 3, 4, 5])
+ax.set_yticklabels(['1', '2', '3', '4', '5'])
+ax.set_xticks(angles[:-1])
+ax.set_xticklabels(variables, fontsize=10)
+
+# Annotate data values for Lolos
+for i in range(num_vars):
+    ax.annotate(f'{data_lolos[i]:.2f}', (angles[i], data_lolos[i]),
+                textcoords='offset points', xytext=(0,10), ha='right', color='blue')
+
+# Annotate data values for Tidak Lolos
+for i in range(num_vars):
+    ax.annotate(f'{data_tidak_lolos[i]:.2f}', (angles[i], data_tidak_lolos[i]),
+                textcoords='offset points', xytext=(0,10), ha='left', color='red')
+
+# Add legend
+plt.legend(loc='upper left', bbox_to_anchor=(-0.1, 1.1))
+
+# Show the plot
+plt.show()
