@@ -1,4 +1,4 @@
-# DRTPMTelkomKerjaPraktik <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/a8c791e0-7cf0-461c-bdd6-693c10a2dd64" />
+# DRTPMTelkomKerjaPraktik <img width="50" height="50" alt="image" src="https://github.com/user-attachments/assets/a8c791e0-7cf0-461c-bdd6-693c10a2dd64" />
 
 - Performed feature engineering by transforming qualitative evaluations of master’s research proposals into quantitative data. 
 - Developed multi-criteria evaluation frameworks (track record, urgency, methodology, references). 
